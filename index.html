@@ -13,10 +13,10 @@ if(t!=="dark"&&t!=="light")t=(window.matchMedia&&matchMedia("(prefers-color-sche
 document.documentElement.setAttribute("data-bs-theme",t);
 })();
 </script>
-<link href="/bootstrap.rtl.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css'" rel="stylesheet">
-<link rel="stylesheet" href="/bootstrap-icons.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'">
-<link rel="stylesheet" href="/vazirmatn.css" onerror="this.onerror=null;this.href='https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap'">
-<script src="/xlsx.full.min.js" onerror="this.onerror=null;var n=document.createElement('script');n.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';document.head.appendChild(n)"></script>
+<link href="bootstrap.rtl.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css'" rel="stylesheet">
+<link rel="stylesheet" href="bootstrap-icons.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'">
+<link rel="stylesheet" href="vazirmatn.css" onerror="this.onerror=null;this.href='https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap'">
+<script src="xlsx.full.min.js" onerror="this.onerror=null;var n=document.createElement('script');n.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';document.head.appendChild(n)"></script>
 
 <style>
 :root{
@@ -420,7 +420,7 @@ overflow-x:auto
 <div id="root"></div>
 
 <script>
-const API_URL="/api";
+const API_URL="api";
 
 const GRADES=["هفتم","هشتم","نهم"];
 
@@ -717,6 +717,7 @@ return st;
 CLOUD_READY=false;
 console.error(error);
 BASE=null;
+try{const L=localStorage.getItem("ganjine_local");if(L)return normalizeState(JSON.parse(L))}catch(e){}
 return normalizeState(createDefaultState());
 }
 }
@@ -752,6 +753,8 @@ return ok;
 }catch(error){
 CLOUD_READY=false;
 console.error(error);
+// سرور در دسترس نیست (مثلاً GitHub Pages): فقط روی همین مرورگر ذخیره می‌شود
+try{localStorage.setItem("ganjine_local",JSON.stringify(normalizeState(S)));return true}catch(e){}
 return false;
 }finally{
 CLOUD_SAVING=false;
@@ -5139,6 +5142,6 @@ render();
 initializeApp();
 </script>
 
-<script src="/bootstrap.bundle.min.js" onerror="this.onerror=null;var n=document.createElement('script');n.src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js';document.body.appendChild(n)"></script>
+<script src="bootstrap.bundle.min.js" onerror="this.onerror=null;var n=document.createElement('script');n.src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js';document.body.appendChild(n)"></script>
 </body>
 </html>
