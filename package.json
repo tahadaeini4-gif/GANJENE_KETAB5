@@ -1,0 +1,1 @@
+{"name":"ganjine-ketab","version":"1.0.0","private":true,"scripts":{"start":"node server.js","libs":"node fetch-libs.js"},"engines":{"node":">=18"}}
